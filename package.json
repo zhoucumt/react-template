@@ -1,33 +1,81 @@
 {
-  "name": "react-template",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-webpack",
+  "version": "1.0.0",
+  "description": "react-webpack environment",
+  "main": "index.js",
+  "author": "Mark_Zhang",
+  "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.53",
+    "axios": "^0.18.0",
+    "classnames": "^2.2.6",
+    "connected-react-router": "^4.3.0",
+    "history": "^4.7.2",
+    "normalize.css": "^8.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "1.1.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "react-redux": "^5.0.7",
+    "react-router-config": "^1.0.0-beta.4",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.3.3"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.0.4",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-preset-stage-0": "^6.24.1",
+    "@babel/core": "^7.0.0-beta.53",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.53",
+    "@babel/plugin-proposal-function-bind": "^7.0.0-beta.53",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-beta.53",
+    "@babel/preset-env": "^7.0.0-beta.53",
+    "@babel/preset-react": "^7.0.0-beta.53",
+    "autoprefixer": "^8.6.5",
+    "babel-eslint": "^8.2.6",
+    "babel-loader": "^8.0.0-beta",
+    "clean-webpack-plugin": "^0.1.19",
     "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
-    "file-loader": "^2.0.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
     "jsx-loader": "^0.13.2",
-    "style-loader": "^0.23.0",
-    "url-loader": "^1.1.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.9"
+    "lint-staged": "^7.2.0",
+    "mini-css-extract-plugin": "^0.4.1",
+    "node-sass": "^4.9.2",
+    "opener": "^1.4.3",
+    "postcss-loader": "^2.1.6",
+    "prettier": "^1.13.7",
+    "react-hot-loader": "^4.3.3",
+    "react-loadable": "^5.4.0",
+    "redux-devtools-extension": "^2.13.5",
+    "sass-loader": "^7.0.3",
+    "standard": "^11.0.1",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.16.0",
+    "webpack-bundle-analyzer": "^2.13.1",
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4",
+    "webpack-stylish": "^0.1.8"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "/dist/",
+      "yarn.lock"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "scripts": {
+    "linc": "node_modules/.bin/standard",
+    "fix": "node_modules/.bin/standard --fix",
+    "start": "cross-env NODE_ENV=development PORT=4500 node build/webpack.config.dev.js",
+    "build": "cross-env NODE_ENV=production node_modules/.bin/webpack --progress --colors --config ./build/webpack.config.production.js",
+    "build:online": "cross-env NODE_ENV=production_online node_modules/.bin/webpack --progress --colors --config ./build/webpack.config.production.js",
+    "precommit": "lint-staged"
   }
 }
