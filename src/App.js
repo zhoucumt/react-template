@@ -4,6 +4,7 @@ import {
   BrowserRouter as Router // HashRouter / BrowserRouter
 } from "react-router-dom";
 import { renderRoutes } from "react-router-config";
+let name = "";
 
 import "normalize.css";
 import "./styles.scss";
