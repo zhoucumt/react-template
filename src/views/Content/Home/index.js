@@ -7,7 +7,19 @@ import { push } from "connected-react-router";
 import { setDemoData } from "../../../redux/actions/demo";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    console.log("constructor");
+    // console.log('this.props: ', this.props);
+    // console.log('this.context', this.context);
+    // console.log('this.updater: ', this.updater);
+  }
+
   render() {
+    console.log("render");
+    // console.log('this.props: ', this.props);
+    // console.log('this.context', this.context);
+    // console.log('this.updater: ', this.updater);
     return (
       <React.Fragment>
         <button onClick={() => this.props.setDemoData()}>
@@ -24,6 +36,18 @@ class Home extends Component {
         })}
       </React.Fragment>
     );
+  }
+
+  componentWillMount() {
+    console.log("componentWillMount");
+  }
+
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
+
+  componentWillReceiveProps() {
+    console.log("componentWillReceiveProps");
   }
 }
 
